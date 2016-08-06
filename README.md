@@ -14,10 +14,10 @@ The backend API has the following API endpoints that the Chrome extension hits u
      * {email:`string`, googleId:`string`, history:`[HistoryItem]`}
   *  Output:
      * `200` - User was successfully added
-* `POST /users`
+* `POST /nlp`
   * Input: `JSONObject`
     * {googleId:`string`, webpage:`string`}
-  * Output: `NLPAtomicResultList`
+  * Output: `NLPResultList`
 
 The backend currently has one microservice that it depends on - the NLP microservice, which actually parses through the webpage data, runs NLP and turns it into the actionable data that is then used for the rendering of the information cards from within the extension.
 
@@ -25,7 +25,7 @@ The backend currently has one microservice that it depends on - the NLP microser
 The following custom types that were defined on the API endpoints are defined as follows:
 * `JSONObject`:  A JSON serialization representation of an object/dictionary
 * `HistoryItem`: A Chrome HistoryItem https://developer.chrome.com/extensions/history#type-HistoryItem
-* `NLPAtomicResultList`: [{metadata:{type:`string`}, data:?}]
+* `NLPResultList`: [{metadata:{type:`string`}, data:?}]
     *  type could be a string from the following:
         * `google-maps`
         * `google-calendar`
