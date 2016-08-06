@@ -45,3 +45,7 @@ The following custom types that were defined on the API endpoints are defined as
             * data is a URL string that directly leads to the relevant Wikipedia information
         * `yelp-information`: `JSONObject`
             * {name:`string`,description:`string`,ratings:`float`,images:`[string]`}
+
+## Microservice Interface
+The NLP Microservice is invoked by the Oracle backend like this: 
+  * `[nlpModuleName] userId webpageString`
