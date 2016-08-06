@@ -25,7 +25,7 @@ The backend currently has one microservice that it depends on - the NLP microser
 The following custom types that were defined on the API endpoints are defined as follows:
 * `JSONObject`:  A JSON serialization representation of an object/dictionary
 * `HistoryItem`: A Chrome HistoryItem https://developer.chrome.com/extensions/history#type-HistoryItem
-* `NLPResultList`: [{metadata:{type:`string`}, data:?}]
+* `NLPResultList`: [{metadata:{type:`string`, term:`string`, category:`string`}, data:?}]
     *  type could be a string from the following:
         * `google-maps`
         * `google-calendar`
