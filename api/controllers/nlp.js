@@ -31,28 +31,21 @@ module.exports = {
 		// user query logic
 		DB.models.user.findOne({where: {googleid: googleId}})
 			.then(user => {
-				// var usr = user.get({plain: true});
-				// if(!usr.email)
-				// 	return res.status(404).send('User not Found');
+				if(user)
+					return res.status(404).send('User not Found');
 
 				return res.send(user);
 			})
 			.catch(err => {
-				console.log(err);
 				res.status(500).json(err)
 			});
 	},
 
 	users(req, res) {
 		var {email, googleId, history} = req.body;
-		console.log(email, googleId);
 
 		if(!email || !googleId || history < 1)
 			return res.status(400).send('`users` paylod is missing a property, please try again.');
-
-		//do null checking
-
-
 
 		DB.models.user.findOrCreate({where: {email: email, googleid: googleId}})
 		.then((user) => {
@@ -64,16 +57,6 @@ module.exports = {
 			.then(something => res.send('User was successfully added'))
 			.catch(err => res.json(err));
 		});
-
-
-
-		// DB.models.user.findOrCreate({where: {email: email, googleid: googleId}})
-		// 	.then((user) => {
-		// 		hist.user_id = googleId;
-		// 		return DB.models.history.create(hist);
-		// 	})
-		// 	.then(() => res.send('User was successfully added'))
-		// 	.catch(err => res.json(err));
 	},
 
 	nlp(req, res) {
@@ -134,5 +117,4 @@ module.exports = {
 		// for client
 
 	}
-
 }
