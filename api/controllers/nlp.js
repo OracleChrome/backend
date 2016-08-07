@@ -52,8 +52,6 @@ module.exports = {
 
 		//do null checking
 
-
-
 		DB.models.user.findOrCreate({where: {email: email, googleid: googleId}})
 		.then((user) => {
 			history.map(h => {
