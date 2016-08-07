@@ -12,31 +12,34 @@ const MAX = 3;
 		yelp
 		foursquare
 */
+const config = (query) => {
+	return {
+		url: `https://api.cognitive.microsoft.com/bing/v5.0/search?q=${query}&count=2&offset=0&mkt=en-us&safesearch=Moderate`,
+		method: 'get',
+		timeout: 150000,
+		headers: { 'Ocp-Apim-Subscription-Key': '3db91c615efc499e95a3af94f30fd2b4'},
+		auth: {
+		    username: '3db91c615efc499e95a3af94f30fd2b4',
+		    password: '3db91c615efc499e95a3af94f30fd2b4'
+		}
+	};
+};
 
 const hydrator = (results, cb) => {
-	//for results
-	var articles = [];
-	results.forEach((slot, i) => {
-		if(i < MAX){
-			console.log('counting ', i);
-			var {metadata, data} = slot;
-			//web data
-			axios({
-				url: `https://api.cognitive.microsoft.com/bing/v5.0/search?q=${metadata.text}&count=2&offset=0&mkt=en-us&safesearch=Moderate`,
-				method: 'get',
-				timeout: 150000,
-				headers: { 'Ocp-Apim-Subscription-Key': '3db91c615efc499e95a3af94f30fd2b4'},
-				auth: {
-				    username: '3db91c615efc499e95a3af94f30fd2b4',
-				    password: '3db91c615efc499e95a3af94f30fd2b4'
-				}
-			})
-			.then((data, e) => articles.push(data.data.webPages.value))
-			.catch(err => console.log('le err', err))
-		}
-	});
+	var terms = results
+				.filter((slot, i) => i < MAX)
+				.map(slot => slot.metadata.term)
+				.map(term => axios(config(term)));
 
-	return results.concat(articles);
+		// console.log('=======>', metadata);
+		
+	return axios.all(terms)
+		.then(axios.spread((a, b, c) => [a, b, c].map(data => data.data.webPages.value)))
+		// .then((data, e) => articles.push(data.data.webPages.value))
+		// .then(d => {
+		// 	console.log('le whoo', d);
+		// 	return d;
+		// });
 };
 
 module.exports = hydrator;

@@ -161,10 +161,13 @@ module.exports = {
 				}]
 
 		var parsed = hydro(data);
-		var params = {userId:'1251245', webpageText: '<div>adgadga</div>'};
 
-		cmd.get(`python ${NLP_PATH} "${params}"`, 
-			(out) => res.json(JSON.parse(out)));
+		res.json(parsed);
+		
+		// NLP --code
+		//var params = {userId:'1251245', webpageText: '<div>adgadga</div>'};
+		// cmd.get(`python ${NLP_PATH} "${params}"`, 
+		// 	(out) => res.json(JSON.parse(out)));
 
 
 
