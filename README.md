@@ -47,5 +47,5 @@ The following custom types that were defined on the API endpoints are defined as
             * {name:`string`,description:`string`,ratings:`float`,images:`[string]`}
 
 ## NLP Microservice Interface
-The NLP Microservice is invoked by the Oracle backend like this: 
-  * `nlprouter.py [userId] [webpageString]`
+The NLP Microservice is invoked by the Oracle backend by using the Node PythonShell module and sending this JSON schema payload: 
+  * `{userId:string, webpageText:string}`
