@@ -1,0 +1,33 @@
+version: '2'
+services:
+  
+  oracle_app:
+    build: 
+      context: .
+      dockerfile: PythonNodeDocker
+    depends_on:
+      - oracle_db
+      - oracle_kafka
+    volumes:
+      - .:/app
+    command: node /app/index.js
+    ports:
+      - "8000:8000"
+  
+  oracle_db:
+    image: postgres:9.5.3
+    environment:
+      - POSTGRES_PASSWORD=oracle!2015
+      - POSTGRES_USER=oracle
+      - POSTGRES_DB=oracle
+    ports:
+      - "5432:5432"
+  
+  oracle_kafka:
+    image: spotify/kafka
+    environment:
+      - ADVERTISED_HOST=192.168.99.100
+      - ADVERTISED_PORT=9092
+    ports:
+      - "9092:9092"
+      - "2181:2181"
