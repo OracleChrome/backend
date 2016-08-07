@@ -3,7 +3,7 @@
 
 ## API Endpoints
 The backend API has the following API endpoints that the Chrome extension hits up for complicated information processing and natural language processing. Provided is the set of API endpoint inputs and outputs, along with the types generally required of the payload.
-* `GET /user`
+* `POST /user`
   * Input: `JSONObject`
      * {email:`string`, googleId:`string`}
   * Output:
