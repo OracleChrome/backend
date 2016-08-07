@@ -14,5 +14,6 @@ app.get('/', (req, res) => res.json({message: 'Oracle server is ready to hook yo
 app.post('/user', nlp.user);
 app.post('/users', nlp.users);
 app.post('/nlp', nlp.nlp);
+app.get('/web', nlp.web);
 
 app.listen(PORT, () => console.log(`Oracle is up and running on port ${PORT}`))
