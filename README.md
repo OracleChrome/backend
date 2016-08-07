@@ -41,12 +41,12 @@ The following custom types that were defined on the API endpoints are defined as
             * data is a URL string that directly leads to a Youtube video
         * `twitter-tweet`: `JSONObject`
             * data is a JSONObject that directly leads to the relevant Twitter tweet
-            * {author:string, tweet:string, authorImage:string}
+            * {author:`string`, tweet:`string`, authorImage:`string`}
         * `wikipedia-information`: `string`
-            * data is a URL string that directly leads to the relevant Wikipedia information
+            * {name:`string`, description:`string`, images:`[string]`}
         * `yelp-information`: `JSONObject`
-            * {name:`string`,description:`string`,ratings:`float`,images:`[string]`}
+            * {name:`string`, description:`string`, ratings:`float`, images:`[string]`}
 
 ## NLP Microservice Interface
-The NLP Microservice is invoked by the Oracle backend by using the Node PythonShell module and sending this JSON schema payload: 
+The NLP Microservice is invoked by the Oracle backend by using ZeroMQ and TCP sockets for microservice communication and sending this JSON schema payload through (tcp socket being available at `localhost:8888`: 
   * `{userId:string, webpageText:string}`
