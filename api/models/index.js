@@ -1,14 +1,19 @@
 const Sequelize = require('sequelize');
-const sql 		= new Sequelize(
-  'postgres',
-  'postgres',
-  null,
-  {
-    dialect: 'postgres',
-    host: '192.168.99.100',
-    port: '5432',
-  }
-);
+// const sql 		= new Sequelize(
+//   'postgres',
+//   'postgres',
+//   null,
+//   {
+//     dialect: 'postgres',
+//     host: '192.168.99.100',
+//     port: '5432',
+//   }
+// );
+const sql = new Sequelize('oracle', 'ashleyn', '', {
+	dialect: 'postgres',
+	host: 'localhost',
+	// po
+})
 //models
 const History 	= require('./history');
 const User 		= require('./user');
@@ -21,7 +26,7 @@ var HistoryModel = sql.define('history', History, model_config);
 UserModel.hasMany(HistoryModel);
 HistoryModel.belongsTo(UserModel);
 
-sql.sync({force:true}).then(function () {
-});
+// sql.sync({force:true}).then(function () {
+// });
 
 module.exports =  sql;
