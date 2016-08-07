@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for grubn",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grubn/backend.git"
+  },
+  "author": "Ashley Narcisse, Alastair Paragras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grubn/backend/issues"
+  },
+  "homepage": "https://github.com/Grubn/backend#readme",
+  "dependencies": {
+    "axios": "^0.13.1",
+    "aylien_textapi": "^0.6.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "html-to-text": "^2.1.3",
+    "node-bing-api": "^2.4.1",
+    "node-cmd": "^1.1.1",
+    "pg": "^6.0.3",
+    "pg-hstore": "^2.3.2",
+    "python-shell": "^0.4.0",
+    "sequelize": "^3.23.6",
+    "turf": "^3.0.14",
+    "unfluff": "^1.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
+  }
+}
