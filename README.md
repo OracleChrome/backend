@@ -46,6 +46,6 @@ The following custom types that were defined on the API endpoints are defined as
         * `yelp-information`: `JSONObject`
             * {name:`string`,description:`string`,ratings:`float`,images:`[string]`}
 
-## Microservice Interface
+## NLP Microservice Interface
 The NLP Microservice is invoked by the Oracle backend like this: 
-  * `[nlpModuleName] userId webpageString`
+  * `nlprouter.py [userId] [webpageString]`
