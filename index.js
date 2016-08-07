@@ -8,7 +8,7 @@ const PORT = 8000;
 const nlp = require('./api/controllers/nlp');
 
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
 
 app.get('/', (req, res) => res.json({message: 'Oracle server is ready to hook you up with meals'}));
 app.post('/user', nlp.user);
